@@ -23,7 +23,6 @@ public class RunCuckesTest extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void beforeExecution() {
         PropertyConfigurator.configure("log.properties");
-        UserConfig.getInstance().initialize();
         log.info("-----Start Automation execution-----");
     }
 
