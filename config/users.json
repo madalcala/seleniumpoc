@@ -1,0 +1,10 @@
+{
+  "admin user": {
+    "email": "malcala.jalasoft@gmail.com",
+    "password": "tresconejos3"
+  },
+  "test user": {
+    "email": "malcala.test@gmail.com",
+    "password": "Test123!"
+  }
+}

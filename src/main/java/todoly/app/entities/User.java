@@ -7,27 +7,8 @@ package todoly.app.entities;
  * @since 06/26/2021
  */
 public class User {
-    private String userName;
     private String emailAddress = "";
     private String password;
-
-    /**
-     * Gets the user name.
-     *
-     * @return the current user name.
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * Sets the user name.
-     *
-     * @param userName user name to set.
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     /**
      * Gets email address.
@@ -43,7 +24,7 @@ public class User {
      *
      * @param emailAddress - User's email address.
      */
-    public void setEmailAddress(String emailAddress) {
+    public void setEmailAddress(final String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
@@ -61,7 +42,7 @@ public class User {
      *
      * @param password user password to set.
      */
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 }

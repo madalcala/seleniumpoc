@@ -1,0 +1,92 @@
+repositories {
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url 'http://repo.bodar.com'
+        }
+    }
+    dependencies {
+        classpath 'net.masterthought:cucumber-reporting:0.1.0'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+
+group 'TODO.LY'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+import net.masterthought.cucumber.ReportBuilder
+
+dependencies {
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.0'
+
+    testCompile 'io.cucumber:cucumber-java:2.4.0'
+    testCompile 'io.cucumber:cucumber-junit:2.4.0'
+
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+}
+
+def generateReport(String pathCucumber, String pathReport) {
+    File reportOutputDirectory = new File(pathReport)
+    List<String> jsonReportFiles = new ArrayList<>()
+    jsonReportFiles.add(pathCucumber)
+
+    String buildNumber = "1"
+    String buildProjectName = "Todoly"
+    String pluginUrlPath = ""
+    boolean skippedFails = true
+    boolean pendingFails = true
+    boolean undefinedFails = true
+    boolean missingFails = true
+    boolean flashCharts = true
+    boolean runWithJenkins = false
+    boolean artifactsEnabled = false
+    String artifactConfig = ""
+    boolean highCharts = true
+    boolean parallelTesting = false
+
+    ReportBuilder reportBuilder = new ReportBuilder(jsonReportFiles, reportOutputDirectory,
+            pluginUrlPath, buildNumber, buildProjectName, skippedFails, pendingFails,
+            undefinedFails, missingFails, flashCharts, runWithJenkins, artifactsEnabled,
+            artifactConfig, highCharts, parallelTesting)
+    reportBuilder.generateReports()
+}
+
+// Task with configuration to execute the features
+task executeFeatures(type: Test) {
+    options {
+        jvmArgs = ['-Dcucumber.options= --glue steps --plugin pretty --plugin json:build/cucumber/cucumber.json ' +
+                           '--plugin rerun:build/cucumber/rerun.txt classpath:' + featureFolders]
+    }
+
+    doLast {
+        generateReport('build/cucumber/cucumber.json', 'build/cucumber/reports')
+    }
+}
+
+tasks.withType(Test) {
+    useTestNG()
+    systemProperty "browser", browser
+}
+
+// Checkstyle configurations, on all source it only runs when is requested directly.
+checkstyle {
+    toolVersion = '8.9'
+}
+checkstyleMain.enabled = gradle.startParameter.taskNames.contains('checkstyleMain')
+checkstyleMain.group = 'verification'
+checkstyleTest.enabled = gradle.startParameter.taskNames.contains('checkstyleTest')
+checkstyleTest.group = 'verification'

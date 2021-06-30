@@ -1,0 +1,8 @@
+{
+  "web driver":
+  {
+    "implicit wait time":"30",
+    "explicit wait time":"40",
+    "wait sleep time":"500"
+  }
+}
