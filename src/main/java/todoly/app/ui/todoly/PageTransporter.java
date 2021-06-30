@@ -29,7 +29,7 @@ public final class PageTransporter {
      * This method is used for go to a page.
      */
     public static void goToUrl() {
-        webDriver.navigate().to("https://todo.ly/");
+        webDriver.navigate().to(getBaseUrl());
     }
 
     /**

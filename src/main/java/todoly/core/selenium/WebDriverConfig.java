@@ -1,6 +1,5 @@
 package todoly.core.selenium;
 
-import todoly.app.config.UserConfig;
 import todoly.core.utils.PropertyReader;
 
 /**
@@ -43,7 +42,6 @@ public final class WebDriverConfig {
         browser = System.getProperty("browser");
         implicitWaitTime = Integer.parseInt(PropertyReader.retrieveField("implicitWaitTime"));
         explicitWaitTime = Integer.parseInt(PropertyReader.retrieveField("explicitWaitTime"));
-        UserConfig.getInstance().initialize();
     }
 
     /**

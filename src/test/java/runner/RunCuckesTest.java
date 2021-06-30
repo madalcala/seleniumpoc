@@ -5,6 +5,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.log4testng.Logger;
+import todoly.app.config.UserConfig;
 import todoly.core.selenium.WebDriverManager;
 
 /**
@@ -22,6 +23,7 @@ public class RunCuckesTest extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void beforeExecution() {
         PropertyConfigurator.configure("log.properties");
+        UserConfig.getInstance().initialize();
         log.info("-----Start Automation execution-----");
     }
 
@@ -31,6 +33,6 @@ public class RunCuckesTest extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterExecution() {
         log.info("-----Ends Automation execution-----");
-//        WebDriverManager.getInstance().quitDriver();
+        WebDriverManager.getInstance().quitDriver();
     }
 }
