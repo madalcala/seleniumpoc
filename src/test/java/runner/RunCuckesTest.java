@@ -31,6 +31,6 @@ public class RunCuckesTest extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterExecution() {
         log.info("-----Ends Automation execution-----");
-        WebDriverManager.getInstance().quitDriver();
+//        WebDriverManager.getInstance().quitDriver();
     }
 }
