@@ -1,10 +1,19 @@
 package todoly.app.constants;
 
 /**
- * This class handles the common constants.
+ * This class contains the common constants.
  *
  * @author Maday Alcala
- * @since 06/26/2021
+ * @since 06/29/2021
  */
-public class CommonConstants {
+public final class CommonConstants {
+
+    /**
+     * Constructor of CommonConstants.
+     */
+    private CommonConstants() {
+    }
+
+    public static final String ADMIN_USER = "admin user";
+    public static final String TEST_USER = "test user";
 }
