@@ -5,7 +5,6 @@ import org.apache.log4j.PropertyConfigurator;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.log4testng.Logger;
-import todoly.app.config.UserConfig;
 import todoly.core.selenium.WebDriverManager;
 
 /**
