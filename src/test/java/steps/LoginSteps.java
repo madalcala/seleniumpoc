@@ -49,7 +49,7 @@ public class LoginSteps {
     /**
      * Verifies the login was completed, the Home Page should be displayed.
      */
-    @Then("^the username should appear in the panel$")
+    @Then("^the logout should appear in the panel$")
     public void verifyLoginIsSuccessful() {
         HomePage homePage = new HomePage();
         assertTrue(homePage.verifyLogoutBtnIsDisplayed(), "Home Page was not displayed.");

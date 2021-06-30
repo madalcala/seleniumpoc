@@ -12,9 +12,8 @@ import todoly.core.selenium.WebDriverManager;
  * This class handles the Runner class for the test.
  *
  * @author Maday Alcala
- * @since 06/26/2021
+ * @since 06/28/2021
  */
-
 public class RunCuckesTest extends AbstractTestNGCucumberTests {
     private Logger log = Logger.getLogger(getClass());
 

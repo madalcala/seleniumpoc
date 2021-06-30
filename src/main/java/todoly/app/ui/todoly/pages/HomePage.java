@@ -99,7 +99,7 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Marks the todos as completed.
+     * Logs out.
      */
     public void logout() {
         driverTools.clickElement(logoutBtn);

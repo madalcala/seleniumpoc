@@ -3,7 +3,7 @@ Feature: Create, delete a new Todo
   @logout
   Scenario: Create new todo
     Given I am logged as admin user
-    Then the username should appear in the panel
+    Then the logout should appear in the panel
     When I create a new todo with the following information
       | name | Test03 |
     Then the todo created should be displayed
